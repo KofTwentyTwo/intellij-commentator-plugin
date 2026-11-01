@@ -47,7 +47,9 @@ class CaseChangerActionTest
       assertEquals(List.of("foo", " ", "bar"), toWords("foo bar"));
       assertEquals(List.of("foo", "\n", "bar"), toWords("foo\nbar"));
       assertEquals(List.of(" ", "foo", "\n   ", "bar", " "), toWords(" foo\n   bar "));
-      assertEquals(List.of("one-two"), toWords("one-two"));
+      // dash handling is intentionally disabled (see isWordPart and the commented-out *_DASHES transforms),
+      // so a dash is a separator, not part of a word.
+      assertEquals(List.of("one", "-", "two"), toWords("one-two"));
    }
 
 
@@ -60,7 +62,9 @@ class CaseChangerActionTest
       assertEquals(List.of("foo", "bar"), toSubWords("foo_bar"));
       assertEquals(List.of("foo", "Bar"), toSubWords("fooBar"));
       assertEquals(List.of("Foo", "Bar"), toSubWords("FooBar"));
-      assertEquals(List.of("foo", "bar"), toSubWords("foo-bar"));
+      // dash handling is intentionally disabled (see isWordPart and the commented-out *_DASHES transforms),
+      // so a dash is not a sub-word separator.
+      assertEquals(List.of("foo-bar"), toSubWords("foo-bar"));
    }
 
 
