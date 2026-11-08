@@ -5,7 +5,7 @@ on:
     tags: ['v*']
 jobs:
   gradle:
-    uses: self:KofTwentyTwo/ci-workflows/.gitea/workflows/gradle.yaml@main
+    uses: self:KofTwentyTwo/ci-workflows/.gitea/workflows/gradle.yaml@v1
     with:
       java-version: '17'
       tasks: build
