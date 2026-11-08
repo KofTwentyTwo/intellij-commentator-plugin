@@ -1,0 +1,12 @@
+name: build
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+jobs:
+  gradle:
+    uses: self:KofTwentyTwo/ci-workflows/.gitea/workflows/gradle.yaml@v1
+    with:
+      java-version: '17'
+      tasks: build
+      artifacts: build/distributions/*.zip
