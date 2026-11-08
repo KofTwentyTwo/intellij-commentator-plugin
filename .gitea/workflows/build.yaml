@@ -5,8 +5,7 @@ on:
     tags: ['v*']
 jobs:
   gradle:
-    uses: self:KofTwentyTwo/ci-workflows/.gitea/workflows/gradle.yaml@small-workflows
-    secrets: inherit
+    uses: self:KofTwentyTwo/ci-workflows/.gitea/workflows/gradle.yaml@main
     with:
       java-version: '17'
       tasks: build
